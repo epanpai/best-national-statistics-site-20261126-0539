@@ -1,0 +1,254 @@
+/* Meridia Statistics — one stylesheet for the whole site. Deep navy
+   headers, a warm paper background, and a single blue accent, so the
+   figures and charts do the talking. Layouts collapse to one column
+   below 640px. */
+
+:root {
+  --navy: #17324f;
+  --navy-dark: #0e2237;
+  --accent: #0f6fb2;
+  --teal: #0e8a7b;
+  --paper: #f7f5f0;
+  --card: #ffffff;
+  --ink: #1c2b3a;
+  --muted: #5b7186;
+  --line: #dbe4ec;
+  --focus: #d98a16;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.wrap {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a { color: var(--accent); }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Header */
+
+.site-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 18px 0 0;
+}
+.header-inner {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.brand {
+  color: #fff;
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+}
+.brand span { color: #7cc4ea; font-weight: 600; }
+.tagline { margin: 0; color: #b9cddf; font-size: 15px; }
+
+#nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  margin-top: 14px;
+  padding-bottom: 0;
+}
+#nav a {
+  color: #d7e5f0;
+  text-decoration: none;
+  padding: 9px 12px;
+  border-radius: 6px 6px 0 0;
+  font-size: 15px;
+}
+#nav a:hover { background: #23486b; color: #fff; }
+#nav a[aria-current="page"] {
+  background: var(--paper);
+  color: var(--navy);
+  font-weight: 700;
+}
+
+/* Main */
+
+main { padding: 28px 20px 56px; }
+
+h1 {
+  font-size: 34px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  margin: 0 0 8px;
+  color: var(--navy);
+}
+h2 { font-size: 21px; margin: 0 0 12px; color: var(--navy); }
+.lede { font-size: 18px; color: #33465a; max-width: 66ch; margin: 0 0 20px; }
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  flex-wrap: wrap;
+  margin: 0 0 20px;
+}
+.controls button {
+  font: inherit;
+  padding: 8px 14px;
+  border: 1px solid var(--accent);
+  background: #fff;
+  color: var(--accent);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.controls button:hover { background: #e8f3fa; }
+
+.yearpick, .search {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  display: grid;
+  gap: 4px;
+}
+select, input[type="search"] {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid #9fb2c2;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  min-width: 140px;
+}
+input[type="search"] { min-width: 260px; }
+
+/* KPI cards */
+
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 0 0 24px;
+}
+.kpi {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: grid;
+  gap: 2px;
+}
+.kpi-value { font-size: 22px; font-weight: 800; color: var(--navy); letter-spacing: -0.5px; white-space: nowrap; }
+.kpi-label { font-weight: 700; font-size: 14px; }
+.kpi-note { font-size: 13px; color: var(--muted); }
+
+/* Cards, grids, charts */
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin: 0 0 20px;
+}
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.grid2 .card { margin-bottom: 20px; }
+canvas { width: 100%; display: block; }
+
+.source { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+.mono { font-family: ui-monospace, monospace; font-size: 0.92em; }
+
+/* Tables */
+
+table.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+table.data th, table.data td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line);
+}
+table.data thead th {
+  background: #eef3f7;
+  color: var(--navy);
+}
+table.data tbody tr:hover { background: #f2f7fb; }
+table.data th button {
+  font: inherit;
+  font-weight: 700;
+  color: var(--navy);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+table.data td { font-variant-numeric: tabular-nums; }
+
+/* Lists */
+
+.legend {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+.swatch {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+.releases { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.releases li { display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; }
+.releases time { color: var(--muted); font-size: 14px; min-width: 96px; }
+.tag {
+  font-size: 12px;
+  font-weight: 700;
+  background: #e3eef7;
+  color: var(--navy);
+  border-radius: 999px;
+  padding: 2px 9px;
+}
+.quicklinks { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+
+/* Footer */
+
+.site-footer {
+  background: var(--navy-dark);
+  color: #b9cddf;
+  padding: 28px 0 36px;
+  font-size: 14px;
+}
+.site-footer a { color: #9fd2ef; }
+.site-footer strong { color: #fff; }
+
+@media (max-width: 640px) {
+  h1 { font-size: 27px; }
+  .grid2 { grid-template-columns: 1fr; }
+  .kpis { grid-template-columns: 1fr 1fr; }
+  .kpi-value { font-size: 21px; }
+  .card { padding: 16px; }
+  input[type="search"] { min-width: 0; width: 100%; }
+  .brand { font-size: 24px; }
+}
